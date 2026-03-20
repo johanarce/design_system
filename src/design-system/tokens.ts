@@ -1,8 +1,9 @@
 /**
  * Design system tokens — runtime values
  *
- * All values in the design system are derived from these tokens.
- * No component or primitive uses raw CSS values directly.
+ * Color values aligned with Apollo design system (Nexthink) as inspiration.
+ * Spacing scale matches Apollo exactly. Typography kept at readable scale
+ * (Apollo targets dense data UIs; this system targets customer-facing products).
  */
 
 export const spacing = {
@@ -55,60 +56,53 @@ export const fontFamily = {
 /**
  * Primitive color palette — never use directly in components.
  * Use semantic colors below.
+ *
+ * Values derived from Apollo's light theme token set.
  */
 const palette = {
-  // Neutral
+  // Neutral — derived from Apollo's neutral/UI scale
   neutral0: '#ffffff',
-  neutral50: '#f7f8f9',
-  neutral100: '#f0f2f4',
-  neutral200: '#e3e6eb',
-  neutral300: '#c8cdd6',
-  neutral400: '#9ba4b0',
-  neutral500: '#6b7585',
-  neutral600: '#4b5566',
-  neutral700: '#333d4d',
-  neutral800: '#1f2733',
-  neutral900: '#111820',
+  neutral50: '#f5f6fa',    // Apollo app background
+  neutral100: '#e8edf5',   // Apollo container-secondary / surface-subtle
+  neutral200: '#d8dcea',   // Apollo disabled border
+  neutral300: '#a8aebc',   // Apollo disabled text
+  neutral400: '#8b93a6',
+  neutral500: '#58627d',   // Apollo secondary/tertiary text
+  neutral600: '#647893',   // Apollo default form border
+  neutral700: '#272d36',   // Apollo primary text
+  neutral800: '#1a2030',
+  neutral900: '#111520',
 
-  // Accent (brand blue)
-  accent50: '#edf3ff',
-  accent100: '#dae6ff',
-  accent200: '#b3ccff',
-  accent300: '#7aa8ff',
-  accent400: '#4a84ff',
-  accent500: '#2563eb',
-  accent600: '#1d4ed8',
-  accent700: '#1e40af',
-  accent800: '#1e3a8a',
-  accent900: '#1e3066',
+  // Accent (brand blue) — Apollo interactive primary
+  accent50: '#f1f7fc',     // Apollo selected-light / info-subtle
+  accent100: '#d9eaf5',    // Apollo info border
+  accent200: '#a7cde7',    // Apollo primary-disabled
+  accent300: '#5da8ec',    // Apollo selected
+  accent400: '#1c8ef2',    // Apollo focus ring
+  accent500: '#0c6fc6',    // Apollo primary interactive
+  accent600: '#0959a3',    // Apollo primary hover
+  accent700: '#0c5497',    // Apollo primary active / nav-bar
+  accent800: '#08568a',    // Apollo nav-primary
+  accent900: '#063d63',
 
-  // Success (green)
-  success50: '#f0fdf4',
-  success100: '#dcfce7',
-  success500: '#22c55e',
-  success600: '#16a34a',
-  success700: '#15803d',
+  // Success (green) — Apollo semantic
+  success50: '#edf7ee',    // Apollo success bg
+  success100: '#d1ead9',   // Apollo success border
+  success500: '#377b56',   // Apollo success text
+  success600: '#2d6344',
 
-  // Warning (amber)
-  warning50: '#fffbeb',
-  warning100: '#fef3c7',
-  warning500: '#f59e0b',
-  warning600: '#d97706',
-  warning700: '#b45309',
+  // Warning (amber) — Apollo semantic
+  warning50: '#fbf8ec',    // Apollo warning bg
+  warning100: '#f1ecc8',   // Apollo warning border
+  warning500: '#877336',   // Apollo warning text
+  warning600: '#6b5c2b',
 
-  // Error (red)
-  error50: '#fef2f2',
-  error100: '#fee2e2',
-  error500: '#ef4444',
-  error600: '#dc2626',
-  error700: '#b91c1c',
-
-  // Info (sky)
-  info50: '#f0f9ff',
-  info100: '#e0f2fe',
-  info500: '#0ea5e9',
-  info600: '#0284c7',
-  info700: '#0369a1',
+  // Error (red-orange) — Apollo semantic
+  error50: '#fdeae8',      // Apollo error bg
+  error100: '#fbdbd7',     // Apollo error border
+  error500: '#ec6054',     // Apollo error text
+  error600: '#ca2b16',     // Apollo destructive
+  error700: '#a32210',
 } as const;
 
 export const color = {
@@ -120,34 +114,40 @@ export const color = {
 
   // Borders
   border: palette.neutral200,
-  borderStrong: palette.neutral300,
+  borderStrong: palette.neutral600,
 
   // Text
-  text: palette.neutral900,
+  text: palette.neutral700,
   textSubtle: palette.neutral500,
+  textDisabled: palette.neutral300,
   textOnAccent: palette.neutral0,
 
   // Accent
   accent: palette.accent500,
   accentHover: palette.accent600,
+  accentActive: palette.accent700,
   accentSubtle: palette.accent50,
+  focusRing: palette.accent400,
 
   // Semantic statuses
-  success: palette.success600,
+  success: palette.success500,
   successSubtle: palette.success50,
-  warning: palette.warning600,
+  warning: palette.warning500,
   warningSubtle: palette.warning50,
-  error: palette.error600,
+  error: palette.error500,
   errorSubtle: palette.error50,
-  info: palette.info600,
-  infoSubtle: palette.info50,
+  errorDestructive: palette.error600,
+  info: palette.accent500,       // Apollo reuses brand blue for info
+  infoSubtle: palette.accent50,
 } as const;
 
+// Apollo-derived shadows — significantly more subtle than generic CSS shadows
 export const shadow = {
   none: 'none',
-  sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-  md: '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
-  lg: '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+  sm: '0px 1px 4px rgba(136, 136, 136, 0.08)',           // Apollo container
+  md: '0px 2px 8px rgba(139, 147, 166, 0.32)',            // Apollo dropdown
+  lg: '0px 2px 24px rgba(139, 147, 166, 0.32)',           // Apollo dialog
+  xl: '0px 4px 4px rgba(39, 45, 54, 0.16)',               // Apollo dragged
 } as const;
 
 export const transition = {

@@ -17,75 +17,56 @@
   margin-left: 2px;
 }
 
-.selectWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.select {
+.textarea {
   width: 100%;
   font-family: var(--font-family-sans);
+  font-size: var(--font-size-md);
   color: var(--color-text);
   background: var(--color-surface);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
-  appearance: none;
-  cursor: pointer;
-  padding-right: 36px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  line-height: var(--line-height-normal);
+  resize: vertical;
+  min-height: 80px;
   transition:
     border-color var(--transition-fast),
     box-shadow var(--transition-fast);
   outline: none;
+  appearance: none;
+  box-sizing: border-box;
 }
 
-.select:focus:not(.error) {
+.textarea::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.textarea:focus:not(.error) {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 3px rgba(28, 142, 242, 0.2);
 }
 
-.select:disabled {
+.textarea:disabled {
   background: var(--color-surface-subtle);
   color: var(--color-text-subtle);
   cursor: not-allowed;
   opacity: 0.6;
+  resize: none;
 }
 
-.select.error {
+.textarea.error {
   border-color: var(--color-error);
 }
 
-.select.error:focus {
+.textarea.error:focus {
   box-shadow: 0 0 0 3px rgba(236, 96, 84, 0.2);
 }
 
-.chevron {
-  position: absolute;
-  right: var(--spacing-sm);
-  pointer-events: none;
-  color: var(--color-text-subtle);
+.footer {
   display: flex;
-  align-items: center;
-}
-
-/* Sizes */
-.sm {
-  height: 28px;
-  padding-left: var(--spacing-sm);
-  font-size: var(--font-size-sm);
-  border-radius: var(--radius-sm);
-}
-
-.md {
-  height: 36px;
-  padding-left: var(--spacing-md);
-  font-size: var(--font-size-md);
-}
-
-.lg {
-  height: 44px;
-  padding-left: var(--spacing-md);
-  font-size: var(--font-size-lg);
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
 }
 
 .hint {
@@ -97,5 +78,21 @@
 .errorMessage {
   font-family: var(--font-family-sans);
   font-size: var(--font-size-sm);
+  color: var(--color-error);
+}
+
+.charCount {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.charCount.nearLimit {
+  color: var(--color-warning);
+}
+
+.charCount.atLimit {
   color: var(--color-error);
 }
