@@ -27,6 +27,7 @@ export const States: Story = {
       <Input label="With hint" placeholder="Enter value" hint="This is a helpful hint message." />
       <Input label="With error" placeholder="Enter value" error="This field is required." defaultValue="invalid input" />
       <Input label="Disabled" placeholder="Cannot edit" disabled defaultValue="Locked value" />
+      <Input label="Read only" readOnly defaultValue="Read only value" />
       <Input label="Required" placeholder="Required field" required />
     </Stack>
   ),
@@ -35,9 +36,8 @@ export const States: Story = {
 export const Sizes: Story = {
   render: () => (
     <Stack gap="md" style={{ maxWidth: 400 }}>
-      <Input label="Small" size="sm" placeholder="Small input" />
-      <Input label="Medium" size="md" placeholder="Medium input" />
-      <Input label="Large" size="lg" placeholder="Large input" />
+      <Input label="Normal" size="normal" placeholder="Normal input" />
+      <Input label="Large" size="large" placeholder="Large input" />
     </Stack>
   ),
 };
@@ -45,9 +45,9 @@ export const Sizes: Story = {
 export const WithIcons: Story = {
   render: () => (
     <Stack gap="md" style={{ maxWidth: 400 }}>
-      <Input label="Search" iconLeft={<span style={{ fontSize: 14 }}>🔍</span>} placeholder="Search..." />
-      <Input label="Email" iconLeft={<span style={{ fontSize: 14 }}>✉</span>} placeholder="you@example.com" />
-      <Input label="URL" iconRight={<span style={{ fontSize: 14 }}>↗</span>} placeholder="https://" />
+      <Input label="Search" prefix={<span style={{ fontSize: 14 }}>🔍</span>} placeholder="Search..." />
+      <Input label="Email" prefix={<span style={{ fontSize: 14 }}>✉</span>} placeholder="you@example.com" />
+      <Input label="URL" suffix={<span style={{ fontSize: 14 }}>↗</span>} placeholder="https://" />
     </Stack>
   ),
 };

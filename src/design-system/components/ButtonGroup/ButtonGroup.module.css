@@ -1,0 +1,39 @@
+.group {
+  display: inline-flex;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+/* Connect horizontal borders */
+.horizontal > button:not(:first-child),
+.horizontal > a:not(:first-child) {
+  border-left-color: transparent;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.horizontal > button:not(:last-child),
+.horizontal > a:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Connect vertical borders */
+.vertical > button:not(:first-child),
+.vertical > a:not(:first-child) {
+  border-top-color: transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.vertical > button:not(:last-child),
+.vertical > a:not(:last-child) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}

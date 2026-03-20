@@ -21,7 +21,7 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -32,7 +32,8 @@
   pointer-events: none;
 }
 
-/* Sizes */
+/* === Sizes (Apollo-aligned) === */
+.small,
 .sm {
   height: 28px;
   padding: 0 var(--spacing-sm);
@@ -40,62 +41,108 @@
   border-radius: var(--radius-sm);
 }
 
+.medium,
 .md {
   height: 36px;
   padding: 0 var(--spacing-md);
   font-size: var(--font-size-md);
 }
 
+/* lg kept for backward compat */
 .lg {
   height: 44px;
   padding: 0 var(--spacing-lg);
   font-size: var(--font-size-lg);
 }
 
-/* Variants */
+/* === Variants === */
+
+/* primary */
 .primary {
   background: var(--color-accent);
   color: var(--color-text-on-accent);
   border-color: var(--color-accent);
 }
-
 .primary:hover:not(:disabled) {
   background: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
 }
+.primary:active:not(:disabled),
+.primary.pressed {
+  background: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+}
+.primary.selected {
+  background: var(--color-accent-active);
+  border-color: var(--color-accent-active);
+}
 
+/* secondary */
 .secondary {
   background: var(--color-surface);
   color: var(--color-text);
   border-color: var(--color-border-strong);
 }
-
 .secondary:hover:not(:disabled) {
   background: var(--color-surface-subtle);
-  border-color: var(--color-border-strong);
+}
+.secondary:active:not(:disabled),
+.secondary.pressed {
+  background: var(--color-surface-subtle);
+}
+.secondary.selected {
+  background: var(--color-accent-subtle);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
+/* tertiary — Apollo's 3rd variant: transparent, accent-subtle on hover */
+.tertiary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: transparent;
+}
+.tertiary:hover:not(:disabled) {
+  background: var(--color-accent-subtle);
+}
+.tertiary:active:not(:disabled),
+.tertiary.pressed {
+  background: var(--color-accent-subtle);
+}
+.tertiary.selected {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+/* ghost — kept as compat alias of tertiary */
 .ghost {
   background: transparent;
   color: var(--color-text);
   border-color: transparent;
 }
-
 .ghost:hover:not(:disabled) {
   background: var(--color-surface-subtle);
 }
 
+/* destructive */
 .destructive {
   background: var(--color-error);
   color: var(--color-text-on-accent);
   border-color: var(--color-error);
 }
-
 .destructive:hover:not(:disabled) {
   opacity: 0.88;
 }
 
-/* Loading spinner */
+/* === Icon slot === */
+.iconSlot {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-size: 1em;
+}
+
+/* === Loading spinner === */
 .spinner {
   width: 14px;
   height: 14px;
