@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Design System/Overview" />
+
+# Design System
+
+A production-ready design system optimized for **constrained, AI-composable UI**.
+
+## Principles
+
+- **Constrained** — every spacing, color, and type decision comes from a token
+- **Composable** — layout is owned by primitives, not components
+- **Predictable** — components look the same everywhere, no overrides
+
+## Structure
+
+### Tokens
+All raw values: spacing, color, radius, typography, shadow, transition, z-index.
+Located in `src/design-system/tokens.ts`.
+
+### Primitives
+Layout building blocks that own all spacing:
+- **Stack** — vertical layout with `gap`
+- **Inline** — horizontal wrapping layout with `gap`
+- **Grid** — responsive grid layout
+- **Container** — max-width + horizontal padding wrapper
+
+### Components
+UI components with a fixed set of variants and states. No external margins.
+
+---
+
+## Rules
+
+1. No inline `style` props in application code
+2. No raw spacing or color values — use tokens
+3. No margins on components — use layout primitives
+4. Max 3–4 variants per component
